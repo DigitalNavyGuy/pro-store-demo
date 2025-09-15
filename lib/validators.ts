@@ -31,3 +31,22 @@ export const signInFormSchema = z.object({
     .pipe(z.email({ message: "Invalid email address" })),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
+
+// Schema for User Sign-up
+export const signUpFormSchema = z
+  .object({
+    name: z.string().min(3, "Name must be at least 3 charachters"),
+    email: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .pipe(z.email({ message: "Invalid email address" })),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z
+      .string()
+      .min(6, "Confirm password must be at least 6 characters"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
