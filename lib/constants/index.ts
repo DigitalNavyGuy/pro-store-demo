@@ -20,9 +20,9 @@ export const signUpDefaultValues = {
 };
 
 export const shippingAddressDefaultValues = {
-  fullName: "Bart Simpson",
-  streetAddress: "411 Stay Inyo Ln",
-  city: "Nunya",
-  postalCode: "12321",
-  country: "USA",
+  fullName: "",
+  streetAddress: "",
+  city: "",
+  postalCode: "",
+  country: "",
 };
