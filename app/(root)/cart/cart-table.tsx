@@ -2,7 +2,7 @@
 
 import { Cart } from "@/types";
 import { useRouter } from "next/navigation";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import { useTransition } from "react";
 import { addItemToCart, removeItemFromCart } from "@/lib/actions/cart.actions";
 import { ArrowRight, Loader, Minus, Plus } from "lucide-react";
@@ -19,7 +19,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
-import { is } from "zod/v4/locales";
 
 const CartTable = ({ cart }: { cart?: Cart }) => {
   const router = useRouter();
@@ -150,9 +149,6 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
           </Card>
         </div>
       )}
-
-      {/* Render Toaster once */}
-      <Toaster richColors closeButton position="top-right" />
     </>
   );
 };

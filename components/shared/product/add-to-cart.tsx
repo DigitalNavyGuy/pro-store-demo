@@ -18,15 +18,12 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
       const res = await addItemToCart(item);
 
       if (!(res?.success ?? false)) {
-        toast.error(res!.message, {
-          style: { backgroundColor: "red", color: "white" },
-        });
+        toast.error(res!.message);
         return;
       }
 
       // Handle successful add to cart
       toast.success(res.message, {
-        style: { backgroundColor: "green", color: "white" },
         action: {
           label: "Go to Cart",
           onClick: () => router.push("/cart"),
@@ -43,12 +40,7 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
         res?.message ??
         (res?.success ? "Cart updated" : "Something went wrong");
 
-      toast(message, {
-        style: {
-          backgroundColor: res?.success ? "green" : "red",
-          color: "white",
-        },
-      });
+      toast(message);
 
       return;
     });
