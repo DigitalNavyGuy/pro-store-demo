@@ -17,6 +17,8 @@ type DBReturnedCart = {
   totalPrice: string;
   shippingPrice: string;
   taxPrice: string;
+  sessionId: string;
+  userId?: string | null;
 };
 
 // Calculate cart prices (unchanged)
