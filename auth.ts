@@ -206,7 +206,6 @@ export const config: NextAuthConfig = {
       return token;
     },
 
-    // keep your middleware/authorized behavior
     ...authConfig.callbacks,
   },
 };
