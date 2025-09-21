@@ -9,6 +9,8 @@ const currency = z
     "Price must be exactly two decimal places"
   );
 
+const ALLOWED_PAYMENT_METHODS = PAYMENT_METHODS.map((m) => m.trim());
+
 // Schema for Adding Products
 export const insertProductSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 charachters"),
@@ -86,9 +88,12 @@ export const shippingAddressSchema = z.object({
 // Schema for Payment Method
 export const paymentMethodSchema = z
   .object({
-    type: z.string().min(1, "Payment method is required"),
+    type: z
+      .string()
+      .min(1, "Payment method is required")
+      .transform((s) => s.trim()),
   })
-  .refine((data) => PAYMENT_METHODS.includes(data.type), {
+  .refine((data) => ALLOWED_PAYMENT_METHODS.includes(data.type), {
     path: ["type"],
     message: "Invalid payment method",
   });
