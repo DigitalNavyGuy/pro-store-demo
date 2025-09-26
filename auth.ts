@@ -88,7 +88,7 @@ export const config: NextAuthConfig = {
     },
 
     async jwt(params: JwtParams): Promise<JWT> {
-      const { token, user, trigger } = params;
+      const { token, user, trigger, session } = params;
 
       // Add custom fields on a narrowed view of the token
       const t = token as JWT & { id?: string; role?: string; name?: string };
@@ -202,7 +202,10 @@ export const config: NextAuthConfig = {
           }
         }
       }
-
+      // Handle session updates
+      if (session?.user.name && trigger === "update") {
+        token.name = session.user.name;
+      }
       return token;
     },
 
