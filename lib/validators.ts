@@ -1,7 +1,6 @@
-import { email, z } from "zod";
+import { z } from "zod";
 import { formatNumberWithDecimal } from "./utils";
 import { PAYMENT_METHODS } from "./constants";
-import { da } from "zod/v4/locales";
 
 const currency = z
   .string()
